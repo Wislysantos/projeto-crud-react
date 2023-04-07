@@ -1,13 +1,18 @@
 import { Home } from "@mui/icons-material";
-import { Avatar, Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, useTheme } from "@mui/material";
+import { Avatar, Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
+import { useAppDrawerConetxt } from "../../context/DrawerContext";
 
 export const MenuLateral: React.FC<{children : React.ReactNode}> = ({children})=>{
     const theme = useTheme()
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+
+    const {isDrawerOpen, toggleDrawerOpen} = useAppDrawerConetxt()
+
     return(
         <>            
             <Box>
-                <Drawer variant="permanent">
+                <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : "permanent"} onClose={toggleDrawerOpen}>
                     <Box width={theme.spacing(28)} height="100%" display="flex" flexDirection="column">
                         <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center">
                             <Avatar alt="Wisly Santos" sx={{width:theme.spacing(12), height:theme.spacing(12)}}
@@ -26,7 +31,7 @@ export const MenuLateral: React.FC<{children : React.ReactNode}> = ({children})=
                         </Box>
                     </Box>
                 </Drawer>
-                <Box marginLeft={theme.spacing(28)} height="100vh">
+                <Box marginLeft={smDown ? 0 : theme.spacing(28)} height="100vh">
                     {children}         
                 </Box>
             </Box>
