@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import {Routes, Route, Navigate} from "react-router-dom"
 import { useAppDrawerConetxt } from "../shared/context";
 import {useEffect} from "react"
+import { Dashboard } from "../pages";
 
 export const AppRouter = () => {
     const {toggleDrawerOpen, setDrawerOption} = useAppDrawerConetxt();
@@ -18,7 +19,7 @@ export const AppRouter = () => {
     
     return(
         <Routes>
-            <Route path="/pagina-inicial" element={<Button variant="contained" color="primary" onClick={toggleDrawerOpen}>toggle Drawer</Button>}/>
+            <Route path="/pagina-inicial" element={<Dashboard />}/>
 
             <Route path="*" element={<Navigate to="/pagina-inicial"/>}/>
         </Routes>
