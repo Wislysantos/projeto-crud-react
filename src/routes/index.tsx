@@ -1,11 +1,11 @@
 import { Button } from "@mui/material";
 import {Routes, Route, Navigate} from "react-router-dom"
-import { useAppDrawerConetxt } from "../shared/context";
+import { useAppDrawerConetxt, useAppThemeContext } from "../shared/context";
 import {useEffect} from "react"
 import { Dashboard } from "../pages";
 
 export const AppRouter = () => {
-    const {toggleDrawerOpen, setDrawerOption} = useAppDrawerConetxt();
+    const {setDrawerOption} = useAppDrawerConetxt();
 
     useEffect(()=>{
         setDrawerOption([

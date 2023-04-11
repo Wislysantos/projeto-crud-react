@@ -1,13 +1,16 @@
-import { Home } from "@mui/icons-material";
-import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
+import NightlightIcon from '@mui/icons-material/Nightlight';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { Avatar, Box, Divider, Drawer, Icon, IconButton, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { useAppDrawerConetxt } from "../../context/DrawerContext";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import { useAppThemeContext } from '../../context';
 
 
 export const MenuLateral: React.FC<{children : React.ReactNode}> = ({children})=>{
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+    const {toggleTheme, themeName} = useAppThemeContext()
 
     
     const {isDrawerOpen, toggleDrawerOpen, drawerOptions} = useAppDrawerConetxt()
@@ -60,6 +63,16 @@ export const MenuLateral: React.FC<{children : React.ReactNode}> = ({children})=
                                         onClick={smDown ? toggleDrawerOpen : undefined}
                                     />
                                 ))}
+                            </List>
+                        </Box>
+                        <Box >
+                            <List component="nav">
+                                <ListItemButton onClick={toggleTheme}>
+                                    <ListItemIcon>
+                                        <Icon>{themeName === 'light' ? <NightlightIcon/> :<Brightness7Icon/> }</Icon>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Alterar o thema"/>
+                                </ListItemButton>
                             </List>
                         </Box>
                     </Box>
