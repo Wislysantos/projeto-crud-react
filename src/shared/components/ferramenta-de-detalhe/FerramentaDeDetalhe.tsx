@@ -12,13 +12,12 @@ export const FerramentaDeDetalhe: React.FC = ()=>{
     return(
         <Box
             gap={1}
-            margin={1}
-            marginX={2}
+            marginX={1}
             padding={1}
             paddingX={2}
             display="flex"
             alignItems="center"
-            height={theme.spacing(12)}
+            height={theme.spacing(5)}
             component={Paper}
         >
             <Button
