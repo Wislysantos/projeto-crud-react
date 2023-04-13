@@ -4,8 +4,37 @@ import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+interface IFerramentaDeDetalheProps{
+    textoButtonNovo? :string
 
-export const FerramentaDeDetalhe: React.FC = ()=>{
+    mostrarButtonSalvar?: boolean
+    mostrarButtonSalvarEVoltar?: boolean
+    mostrarButtonApagar?: boolean
+    mostrarButtonNovo?: boolean
+    mostrarButtonVoltar?: boolean
+
+    aoClicarSalvar?: ()=>void
+    aoClicarSalvarEVoltar?: ()=>void
+    aoClicarApgar?: ()=>void
+    aoClicarNovo?: ()=>void
+    aoClicarVoltar?: ()=>void
+}
+
+
+export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalheProps> = ({
+    textoButtonNovo="Novo",
+    mostrarButtonSalvar = true,
+    mostrarButtonSalvarEVoltar= false,
+    mostrarButtonApagar= true,
+    mostrarButtonNovo= true,
+    mostrarButtonVoltar= true,
+
+    aoClicarSalvar,
+    aoClicarSalvarEVoltar,
+    aoClicarApgar,
+    aoClicarNovo,
+    aoClicarVoltar,
+})=>{
 
     const theme = useTheme()
 
@@ -20,37 +49,37 @@ export const FerramentaDeDetalhe: React.FC = ()=>{
             height={theme.spacing(5)}
             component={Paper}
         >
-            <Button
+            {mostrarButtonSalvar && (<Button
                 color="primary"
                 disableElevation
-                variant="contained"
+                variant="contained" 
                 startIcon={<SaveIcon/>}
-            >Salvar</Button>
-            <Button
+            >Salvar</Button>)}
+            {mostrarButtonSalvarEVoltar && (<Button
                 color="primary"
                 disableElevation
                 variant="outlined"
                 startIcon={<SaveIcon/>}
-            >Salvar e voltar</Button>
-            <Button
+            >Salvar e voltar</Button>)}
+            {mostrarButtonApagar && (<Button
                 color="primary"
                 disableElevation
                 variant="outlined"
                 startIcon={<DeleteIcon/>}
-            >Apagar</Button>
-            <Button
+            >Apagar</Button>)}
+            {mostrarButtonNovo && (<Button
                 color="primary"
                 disableElevation
                 variant="outlined"
                 startIcon={<AddIcon/>}
-            >Novo</Button>
+            >{textoButtonNovo}</Button>)}
             <Divider variant="middle" orientation="vertical"/>
-            <Button
+            {mostrarButtonVoltar && (<Button
                 color="primary"
                 disableElevation
                 variant="outlined"
                 endIcon={<ArrowBackIcon/>}
-            >Voltar</Button>
+            >Voltar</Button>)}
         </Box>
     )
 }
