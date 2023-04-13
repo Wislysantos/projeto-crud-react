@@ -1,4 +1,4 @@
-import { Box, Button, Paper, useTheme } from "@mui/material"
+import { Box, Button, Paper, useTheme, Divider } from "@mui/material"
 import AddIcon from "@mui/icons-material/Add";
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -45,6 +45,7 @@ export const FerramentaDeDetalhe: React.FC = ()=>{
                 variant="outlined"
                 startIcon={<AddIcon/>}
             >Novo</Button>
+            <Divider variant="middle" orientation="vertical"/>
             <Button
                 color="primary"
                 disableElevation
