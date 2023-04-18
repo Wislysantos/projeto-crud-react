@@ -1,4 +1,4 @@
-import { Box, Button, Paper, useTheme, Divider, Skeleton } from "@mui/material"
+import { Box, Button, Paper, useTheme, Divider, Skeleton, Typography, useMediaQuery } from "@mui/material"
 import AddIcon from "@mui/icons-material/Add";
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -51,6 +51,9 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalheProps> = ({
 
     const theme = useTheme()
 
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
+
     return(
         <Box
             gap={1}
@@ -68,19 +71,27 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalheProps> = ({
                 variant="contained" 
                 startIcon={<SaveIcon/>}
                 onClick={aoClicarSalvar}
-            >Salvar</Button>)}
+                >
+                <Typography variant="button" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+                    Salvar
+                </Typography>
+            </Button>)}
 
-            {mostrarButtonCarregamentoSalvar && (<Skeleton width={110} height={60} />)}
+            {( mostrarButtonCarregamentoSalvar) && (<Skeleton width={110} height={60} />)}
 
-            {(mostrarButtonSalvarEVoltar && !mostrarButtonCarregamentoSalvarEVoltar) && (<Button
+            {(mostrarButtonSalvarEVoltar && !mostrarButtonCarregamentoSalvarEVoltar && !smDown && !mdDown) && (<Button
                 color="primary"
                 disableElevation
                 variant="outlined"
                 startIcon={<SaveIcon/>}
                 onClick={aoClicarSalvarEVoltar}
-            >Salvar e voltar</Button>)}
+                >
+                <Typography variant="button" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+                    Salvar e voltar
+                </Typography>                
+            </Button>)}
 
-            {mostrarButtonCarregamentoSalvarEVoltar && (<Skeleton width={180} height={60} />)}
+            {( mostrarButtonCarregamentoSalvarEVoltar && !smDown && !mdDown) && (<Skeleton width={180} height={60} />)}
 
             {(mostrarButtonApagar && !mostrarButtonCarregamentoApagar) && (<Button
                 color="primary"
@@ -88,9 +99,13 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalheProps> = ({
                 variant="outlined"
                 startIcon={<DeleteIcon/>}
                 onClick={aoClicarApgar}
-            >Apagar</Button>)}
+                >
+                <Typography variant="button" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+                    Apagar
+                </Typography>                
+            </Button>)}
 
-            {mostrarButtonCarregamentoApagar && (<Skeleton width={110} height={60} />)}
+            {(mostrarButtonApagar && mostrarButtonCarregamentoApagar) && (<Skeleton width={110} height={60} />)}
 
             {(mostrarButtonNovo && !mostrarButtonCarregamentoNovo) && (<Button
                 color="primary"
@@ -98,18 +113,26 @@ export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalheProps> = ({
                 variant="outlined"
                 startIcon={<AddIcon/>}
                 onClick={aoClicarNovo}
-            >{textoButtonNovo}</Button>)}
+                >
+                <Typography variant="button" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+                    {textoButtonNovo}
+                </Typography>
+            </Button>)}
 
-            {mostrarButtonCarregamentoNovo && (<Skeleton width={110} height={60} />)}
+            {( mostrarButtonCarregamentoNovo) &&(<Skeleton width={110} height={60} />)}
 
-            <Divider variant="middle" orientation="vertical"/>
-            {(mostrarButtonVoltar && !mostrarButtonCarregamentoVoltar) && (<Button
+            {(mostrarButtonVoltar && !mostrarButtonCarregamentoVoltar &&!smDown)&&(<Divider variant="middle" orientation="vertical"/>)}
+            {(mostrarButtonVoltar && !mostrarButtonCarregamentoVoltar &&!smDown) && (<Button
                 color="primary"
                 disableElevation
                 variant="outlined"
                 endIcon={<ArrowBackIcon/>}
-                onClick={aoClicarVoltar}
-            >Voltar</Button>)}
+                onClick={aoClicarVoltar}                
+                >
+                <Typography variant="button" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+                    Voltar
+                </Typography>
+            </Button>)}
 
             {mostrarButtonCarregamentoVoltar && (<Skeleton width={110} height={60} />)}
 
