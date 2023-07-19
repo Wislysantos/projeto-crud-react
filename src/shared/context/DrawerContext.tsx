@@ -34,7 +34,7 @@ export const DrawerProvider: React.FC<{children : React.ReactNode}>=({children})
 
     return(
         <DrawerContext.Provider value={{isDrawerOpen, toggleDrawerOpen, drawerOptions, setDrawerOption: handleSetDrawerOptions }}>
-            {children}
+            {children}           
         </DrawerContext.Provider>
     )
 }
