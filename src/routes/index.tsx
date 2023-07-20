@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
 import {Routes, Route, Navigate} from "react-router-dom"
-import { useAppDrawerConetxt, useAppThemeContext } from "../shared/context";
+import { useAppDrawerConetxt } from "../shared/context";
 import {useEffect} from "react"
 import { Dashboard } from "../pages";
+import { ListagemDeCidade } from "../pages/cidades/ListagemDeCidade";
 
 export const AppRouter = () => {
     const {setDrawerOption} = useAppDrawerConetxt();
@@ -14,12 +14,18 @@ export const AppRouter = () => {
                 icon : 'Home',
                 path:'/pagina-inicial'
             },
+            {
+                label:'Listagem de Cidade',
+                icon: 'City',
+                path: '/listagem-de-cidade'
+            }
         ])
     },[])
     
     return(
         <Routes>
             <Route path="/pagina-inicial" element={<Dashboard />}/>
+            <Route path="/listagem-de-cidade" element={<ListagemDeCidade />}/>
 
             <Route path="*" element={<Navigate to="/pagina-inicial"/>}/>
         </Routes>

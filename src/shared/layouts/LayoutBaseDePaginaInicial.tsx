@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 interface ILayoutBaseDePaginaInicialProps{
     titulo: string
-    children: React.ReactNode
+    children?: React.ReactNode
     barraDeFerramenta: ReactNode
 }
 
