@@ -1,7 +1,9 @@
 import { useSearchParams } from "react-router-dom"
-import  {useMemo} from 'react'
+import  {useEffect, useMemo} from 'react'
 import { FerramentaDaListagem} from "../../shared/components"
 import { LayoutBaseDePaginaInicial } from "../../shared/layouts"
+import { PessoaServece } from "../../shared/services/api/pessoas/PessoasService"
+import { error } from "console"
 
 export const ListagemDeCidade: React.FC = ()=>{
 
@@ -9,6 +11,17 @@ export const ListagemDeCidade: React.FC = ()=>{
     const busca = useMemo(()=>{
        return searchParams.get('busca') || ''
     },[searchParams])
+
+    useEffect(()=>{
+        PessoaServece.getAll(1, busca)
+            .then((result)=>{
+                if(result instanceof Error){
+                    alert(result.message)
+                }else{
+                    console.log(result.data)
+                }
+            })
+    },[busca])
 
 
     return(

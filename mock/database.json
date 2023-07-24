@@ -1,3 +1,16 @@
 {
-    "pessoas":[ ]
+    "pessoas":[ 
+        {
+            "id" : 1,
+            "cidadaId": 1,
+            "email":"joao@email.com",
+            "nomeCompleto": "João jose"
+        },
+        {
+            "id" : 2,
+            "cidadaId": 1,
+            "email":"carlos@email.com",
+            "nomeCompleto": "Carlos Henrique"
+        }
+    ]
 }
