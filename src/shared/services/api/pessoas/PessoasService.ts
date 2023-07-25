@@ -1,17 +1,15 @@
-import { type } from "os";
 import { Enviroment } from "../../../environment";
 import { Api } from "../axios-config"
-import { error } from "console";
 
 
-interface IListagemPessoa{
+export interface IListagemPessoa{
     id : number,
     email: string,
     cidadaId: number,
     nomeCompleto: string
 }
 
-interface IDetalheDePessoa{
+export interface IDetalheDePessoa{
     id : number,
     email: string,
     cidadaId: number,
