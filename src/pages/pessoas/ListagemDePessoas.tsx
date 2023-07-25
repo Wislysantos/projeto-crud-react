@@ -2,11 +2,12 @@ import  {useEffect, useMemo, useState} from 'react'
 import { useSearchParams } from "react-router-dom"
 
 import { useDebounce } from "../../shared/hooks"
+import { Enviroment } from '../../shared/environment'
 import { FerramentaDaListagem } from "../../shared/components"
 import { LayoutBaseDePaginaInicial } from "../../shared/layouts"
 import { IListagemPessoa, PessoaServece } from "../../shared/services/api/pessoas/PessoasService"
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, LinearProgress } from '@mui/material'
-import { Enviroment } from '../../shared/environment'
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, LinearProgress, Pagination } from '@mui/material'
+
 
 export const ListagemDePessoas: React.FC = ()=>{
 
@@ -20,12 +21,16 @@ export const ListagemDePessoas: React.FC = ()=>{
         return searchParams.get('busca') || ''
     },[searchParams])
 
+    const pagina = useMemo (()=>{
+        return Number(searchParams.get('pagina') || '1')
+    },[searchParams])
+
    
     useEffect(()=>{
         setIsLoading(true)
         debounce(()=>{
             setIsLoading(false)
-            PessoaServece.getAll(1, busca)
+            PessoaServece.getAll(pagina, busca)
             .then((result)=>{
                 if(result instanceof Error){
                     alert(result.message)
@@ -38,7 +43,7 @@ export const ListagemDePessoas: React.FC = ()=>{
             })  
         })
 
-    },[busca])
+    },[busca, pagina])
 
     return(
         <>
@@ -49,7 +54,7 @@ export const ListagemDePessoas: React.FC = ()=>{
                     textoButtonNovo="Nova"
                     mostrarInput
                     textoInput={busca}
-                    mudarTextoDeBusca={texto=> setSearchParams({busca : texto}, {replace: true})}
+                    mudarTextoDeBusca={texto=> setSearchParams({busca : texto, pagina: '1'}, {replace: true})}
                 ></FerramentaDaListagem>
             }
             >
@@ -65,7 +70,7 @@ export const ListagemDePessoas: React.FC = ()=>{
                         <TableBody>
                             {rows.map(row =>(
                                 <TableRow>
-                                    <TableCell></TableCell>
+                                    <TableCell>Ação</TableCell>
                                     <TableCell>{row.nomeCompleto}</TableCell>
                                     <TableCell>{row.email}</TableCell>
                                 </TableRow>
@@ -79,6 +84,17 @@ export const ListagemDePessoas: React.FC = ()=>{
                                 <TableRow>
                                     <TableCell colSpan={3}>
                                         <LinearProgress variant='indeterminate'/>
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                            {(totalCount > 0 && totalCount > Enviroment.LIMITE_DE_LINHA)&&(
+                                <TableRow>
+                                    <TableCell colSpan={3}>
+                                        <Pagination
+                                            page={pagina}
+                                            count={Math.ceil(totalCount / Enviroment.LIMITE_DE_LINHA)} 
+                                            onChange={(e, newPage)=>{setSearchParams({busca, pagina : newPage.toString()}, {replace : true})}}
+                                        />
                                     </TableCell>
                                 </TableRow>
                             )}
