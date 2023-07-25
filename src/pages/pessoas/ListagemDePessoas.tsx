@@ -5,7 +5,8 @@ import { useDebounce } from "../../shared/hooks"
 import { FerramentaDaListagem } from "../../shared/components"
 import { LayoutBaseDePaginaInicial } from "../../shared/layouts"
 import { IListagemPessoa, PessoaServece } from "../../shared/services/api/pessoas/PessoasService"
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, LinearProgress } from '@mui/material'
+import { Enviroment } from '../../shared/environment'
 
 export const ListagemDePessoas: React.FC = ()=>{
 
@@ -70,6 +71,18 @@ export const ListagemDePessoas: React.FC = ()=>{
                                 </TableRow>
                             ))}
                         </TableBody>
+                        {totalCount === 0 && !isLoading &&(
+                            <caption>{Enviroment.LISTAGEM_VAZIA}</caption>
+                        )}
+                        <TableFooter>
+                            {isLoading && (
+                                <TableRow>
+                                    <TableCell colSpan={3}>
+                                        <LinearProgress variant='indeterminate'/>
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                        </TableFooter>
                     </Table>
                 </TableContainer>
             </LayoutBaseDePaginaInicial>
