@@ -1,7 +1,7 @@
 import {Routes, Route, Navigate} from "react-router-dom"
 import { useAppDrawerConetxt } from "../shared/context";
 import {useEffect} from "react"
-import { Dashboard, ListagemDePessoas, ListagemDeCidade } from "../pages";
+import { Dashboard, ListagemDePessoas, ListagemDeCidade, DetalheDePessoas } from "../pages";
 
 export const AppRouter = () => {
     const {setDrawerOption} = useAppDrawerConetxt();
@@ -32,7 +32,7 @@ export const AppRouter = () => {
             <Route path="/listagem-de-cidade" element={<ListagemDeCidade />}/>
             <Route path="/listagem-de-pessoas" element={<ListagemDePessoas />}/>
 
-            <Route path="/pessoas/detalhe/:id" element={<p>testando</p>}/>
+            <Route path="/pessoas/detalhe/:id" element={<DetalheDePessoas/>}/>
 
             <Route path="*" element={<Navigate to="/pagina-inicial"/>}/>
         </Routes>

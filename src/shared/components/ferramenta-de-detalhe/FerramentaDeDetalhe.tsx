@@ -31,7 +31,7 @@ interface IFerramentaDeDetalheProps{
 export const FerramentaDeDetalhe: React.FC<IFerramentaDeDetalheProps> = ({
     textoButtonNovo="Novo",
     mostrarButtonSalvar = true,
-    mostrarButtonSalvarEVoltar= false,
+    mostrarButtonSalvarEVoltar= true,
     mostrarButtonApagar= true,
     mostrarButtonNovo= true,
     mostrarButtonVoltar= true,
