@@ -1,10 +1,7 @@
 {
   "pessoas": [
     {
-      "id": 2,
-      "cidadaId": 1,
-      "email": "carlos@email.com",
-      "nomeCompleto": "Carlos Henrique"
+      "id": 2
     },
     {
       "id": 3,
@@ -59,12 +56,6 @@
       "cidadaId": 1,
       "email": "lucidalva@email.com",
       "nomeCompleto": "lucidalva Santos"
-    },
-    {
-      "id": 12,
-      "cidadaId": 1,
-      "email": "froes@email.com",
-      "nomeCompleto": "Froes Henrique"
     },
     {
       "id": 13,
