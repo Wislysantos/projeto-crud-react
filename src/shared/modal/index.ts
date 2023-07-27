@@ -1,0 +1,1 @@
+export * from './mensagen-de-corfirmacao/mensagemDeCorfirmacao'

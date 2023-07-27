@@ -1,112 +1,106 @@
 {
-    "pessoas":[ 
-        {
-            "id" : 1,
-            "cidadaId": 1,
-            "email":"joao@email.com",
-            "nomeCompleto": "João jose"
-        },
-        {
-            "id" : 2,
-            "cidadaId": 1,
-            "email":"carlos@email.com",
-            "nomeCompleto": "Carlos Henrique"
-        },
-        {
-            "id" : 3,
-            "cidadaId": 1,
-            "email":"ya@email.com",
-            "nomeCompleto": "Yarithza Sousa"
-        },
-        {
-            "id" : 4,
-            "cidadaId": 1,
-            "email":"wisly@email.com",
-            "nomeCompleto": "Wisly Santos"
-        },
-        {
-            "id" : 5,
-            "cidadaId": 1,
-            "email":"Willian@email.com",
-            "nomeCompleto": "Willian Santos"
-        },
-        {
-            "id" : 6,
-            "cidadaId": 1,
-            "email":"Manoela@email.com",
-            "nomeCompleto": "Manoela Santos"
-        },
-        {
-            "id" : 7,
-            "cidadaId": 1,
-            "email":"wesley@email.com",
-            "nomeCompleto": "Wesley Fernando"
-        },
-        {
-            "id" : 8,
-            "cidadaId": 1,
-            "email":"jessica@email.com",
-            "nomeCompleto": "Jessica Fernando"
-        },
-        {
-            "id" : 9,
-            "cidadaId": 1,
-            "email":"luiza@email.com",
-            "nomeCompleto": "Luiza Fernando"
-        },
-        {
-            "id" : 10,
-            "cidadaId": 1,
-            "email":"manoel@email.com",
-            "nomeCompleto": "Manoel Santos"
-        },
-        {
-            "id" : 11,
-            "cidadaId": 1,
-            "email":"lucidalva@email.com",
-            "nomeCompleto": "lucidalva Santos"
-        },
-        {
-            "id" : 12,
-            "cidadaId": 1,
-            "email":"froes@email.com",
-            "nomeCompleto": "Froes Henrique"
-        },
-        {
-            "id" : 13,
-            "cidadaId": 1,
-            "email":"bibi@email.com",
-            "nomeCompleto": "Bibi Ros"
-        },
-        {
-            "id" : 14,
-            "cidadaId": 1,
-            "email":"vitoria@email.com",
-            "nomeCompleto": "Vitoria Henrique"
-        },
-        {
-            "id" : 15,
-            "cidadaId": 1,
-            "email":"Ma@email.com",
-            "nomeCompleto": "Ma Ros"
-        },
-        {
-            "id" : 16,
-            "cidadaId": 1,
-            "email":"paulo@email.com",
-            "nomeCompleto": "Paulo Henrique"
-        },
-        {
-            "id" : 17,
-            "cidadaId": 1,
-            "email":"duda@email.com",
-            "nomeCompleto": "duda Henrique"
-        },
-        {
-            "id" : 18,
-            "cidadaId": 1,
-            "email":"lili@email.com",
-            "nomeCompleto": "Lili Sousa"
-        }
-    ]
+  "pessoas": [
+    {
+      "id": 2,
+      "cidadaId": 1,
+      "email": "carlos@email.com",
+      "nomeCompleto": "Carlos Henrique"
+    },
+    {
+      "id": 3,
+      "cidadaId": 1,
+      "email": "ya@email.com",
+      "nomeCompleto": "Yarithza Sousa"
+    },
+    {
+      "id": 4,
+      "cidadaId": 1,
+      "email": "wisly@email.com",
+      "nomeCompleto": "Wisly Santos"
+    },
+    {
+      "id": 5,
+      "cidadaId": 1,
+      "email": "Willian@email.com",
+      "nomeCompleto": "Willian Santos"
+    },
+    {
+      "id": 6,
+      "cidadaId": 1,
+      "email": "Manoela@email.com",
+      "nomeCompleto": "Manoela Santos"
+    },
+    {
+      "id": 7,
+      "cidadaId": 1,
+      "email": "wesley@email.com",
+      "nomeCompleto": "Wesley Fernando"
+    },
+    {
+      "id": 8,
+      "cidadaId": 1,
+      "email": "jessica@email.com",
+      "nomeCompleto": "Jessica Fernando"
+    },
+    {
+      "id": 9,
+      "cidadaId": 1,
+      "email": "luiza@email.com",
+      "nomeCompleto": "Luiza Fernando"
+    },
+    {
+      "id": 10,
+      "cidadaId": 1,
+      "email": "manoel@email.com",
+      "nomeCompleto": "Manoel Santos"
+    },
+    {
+      "id": 11,
+      "cidadaId": 1,
+      "email": "lucidalva@email.com",
+      "nomeCompleto": "lucidalva Santos"
+    },
+    {
+      "id": 12,
+      "cidadaId": 1,
+      "email": "froes@email.com",
+      "nomeCompleto": "Froes Henrique"
+    },
+    {
+      "id": 13,
+      "cidadaId": 1,
+      "email": "bibi@email.com",
+      "nomeCompleto": "Bibi Ros"
+    },
+    {
+      "id": 14,
+      "cidadaId": 1,
+      "email": "vitoria@email.com",
+      "nomeCompleto": "Vitoria Henrique"
+    },
+    {
+      "id": 15,
+      "cidadaId": 1,
+      "email": "Ma@email.com",
+      "nomeCompleto": "Ma Ros"
+    },
+    {
+      "id": 16,
+      "cidadaId": 1,
+      "email": "paulo@email.com",
+      "nomeCompleto": "Paulo Henrique"
+    },
+    {
+      "id": 17,
+      "cidadaId": 1,
+      "email": "duda@email.com",
+      "nomeCompleto": "duda Henrique"
+    },
+    {
+      "id": 18,
+      "cidadaId": 1,
+      "email": "lili@email.com",
+      "nomeCompleto": "Lili Sousa"
+    }
+  ]
 }

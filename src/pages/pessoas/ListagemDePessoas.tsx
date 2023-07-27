@@ -1,21 +1,27 @@
 import  {useEffect, useMemo, useState} from 'react'
-import { useSearchParams } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, LinearProgress, Pagination, IconButton, Icon } from '@mui/material'
+
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useDebounce } from "../../shared/hooks"
 import { Enviroment } from '../../shared/environment'
+import { mensagemDeCorfirmacao } from "../../shared/modal";
 import { FerramentaDaListagem } from "../../shared/components"
 import { LayoutBaseDePaginaInicial } from "../../shared/layouts"
 import { IListagemPessoa, PessoaServece } from "../../shared/services/api/pessoas/PessoasService"
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableFooter, LinearProgress, Pagination } from '@mui/material'
 
 
 export const ListagemDePessoas: React.FC = ()=>{
 
     const [searchParams, setSearchParams] = useSearchParams() 
-    const {debounce} = useDebounce(2000, true)
-    const [rows, setRows] = useState<IListagemPessoa[]>([])
     const [isLoading, setIsLoading ]= useState(true)
     const [totalCount, setTotalCount] = useState(0)
+    const [rows, setRows] = useState<IListagemPessoa[]>([])
+    const navigate = useNavigate()
+
+    const {debounce} = useDebounce(2000, true)
 
     const busca = useMemo(()=>{
         return searchParams.get('busca') || ''
@@ -45,6 +51,28 @@ export const ListagemDePessoas: React.FC = ()=>{
 
     },[busca, pagina])
 
+    const handleDelete = (id: number) => {
+        mensagemDeCorfirmacao('Deseja realmente excluir este item?',()=>{
+            PessoaServece.deleteById(id)
+                .then(result => {
+                    if (result instanceof Error) {
+                            alert(result.message);
+                        } else {
+                            setRows(oldRows => {
+                                return [
+                                    ...oldRows.filter(oldRow => oldRow.id !== id)
+                                ];
+                            });
+                        alert('Item excluído com sucesso!');
+                    }
+                });
+            }
+        )
+          
+    };
+      
+      
+
     return(
         <>
         <LayoutBaseDePaginaInicial
@@ -61,7 +89,7 @@ export const ListagemDePessoas: React.FC = ()=>{
                 <TableContainer component={Paper} variant='outlined' sx={{width:"auto", margin: 1}}>
                     <Table>
                         <TableHead>
-                            <TableRow>
+                            <TableRow sx={{alignItems: "center"}}>
                                     <TableCell>Ação</TableCell>
                                     <TableCell>Nome</TableCell>
                                     <TableCell>E-mail</TableCell>
@@ -69,8 +97,15 @@ export const ListagemDePessoas: React.FC = ()=>{
                         </TableHead>
                         <TableBody>
                             {rows.map(row =>(
-                                <TableRow>
-                                    <TableCell>Ação</TableCell>
+                                <TableRow key={row.id}>
+                                    <TableCell>
+                                        <IconButton size='small' sx={{p:0}} onClick={()=>handleDelete(row.id)}>
+                                            <Icon><DeleteIcon/></Icon>
+                                        </IconButton>
+                                        <IconButton size='small' sx={{p:0, marginLeft: 2}} onClick={()=>navigate(`/pessoas/detalhe/${row.id}`)}>
+                                            <Icon><EditIcon/></Icon>
+                                        </IconButton>
+                                    </TableCell>
                                     <TableCell>{row.nomeCompleto}</TableCell>
                                     <TableCell>{row.email}</TableCell>
                                 </TableRow>
