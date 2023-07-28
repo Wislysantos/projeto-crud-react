@@ -1,12 +1,14 @@
-import { LinearProgress, Typography } from "@mui/material"
+import { Form } from "@unform/web";
+import { useEffect, useState } from "react";
+import { LinearProgress } from "@mui/material"
 import { useNavigate, useParams } from "react-router-dom"
 
 
+import { VTextField } from "../../shared/forms";
 import { mensagemDeCorfirmacao } from "../../shared/modal";
 import { FerramentaDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePaginaInicial } from "../../shared/layouts";
 import { PessoaServece } from "../../shared/services/api/pessoas/PessoasService";
-import { useEffect, useState } from "react";
 
 export const DetalheDePessoas =()=>{
 
@@ -64,8 +66,13 @@ export const DetalheDePessoas =()=>{
             ></FerramentaDeDetalhe>
         }
         >
-            <Typography variant="h1">detalhe pessoas {id}</Typography>
             {isLoading && (<LinearProgress variant="indeterminate"/>)}
+            <Form onSubmit={(dados)=>console.log(dados)}>
+                <VTextField
+                    name="nomeCompleto"
+                />
+                <button type={"submit"}>submit</button>
+            </Form>
         </LayoutBaseDePaginaInicial>
     )
 }
