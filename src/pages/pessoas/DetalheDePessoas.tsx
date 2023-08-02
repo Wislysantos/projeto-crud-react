@@ -27,7 +27,28 @@ export const DetalheDePessoas =()=>{
     const [nome, setNome] = useState('')
 
     const handleSave = (dados: IFormData)=>{
+        setIsLoading(true)
         console.log(dados)
+        if(id === 'nova'){
+            PessoaServece.create(dados)
+            .then((result)=>{
+                setIsLoading(false)
+                if(result instanceof Error){
+                    alert(result.message)
+                }else{
+                    alert(`${dados} cadastrada com sucesso`)
+                    navite(`/pessoas/detalhe/${result}`)
+                }
+            })
+        }else{
+            PessoaServece.updateById(Number(id), {id : Number(id), ...dados})
+            .then((result)=>{
+                setIsLoading(false)
+                if(result instanceof Error){
+                    alert(result.message)
+                }
+            })
+        }
     }
 
     const handleDelete = (id : number) =>{
@@ -57,8 +78,9 @@ export const DetalheDePessoas =()=>{
                 }else{
                     console.log(result)
                     setNome(result.nomeCompleto)
+                    formRef.current?.setData(result) 
                 }
-           }) 
+           })
         }
     },[id])
 
