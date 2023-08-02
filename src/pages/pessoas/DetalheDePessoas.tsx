@@ -1,5 +1,5 @@
 import { Form } from "@unform/web";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LinearProgress } from "@mui/material"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -9,14 +9,26 @@ import { mensagemDeCorfirmacao } from "../../shared/modal";
 import { FerramentaDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePaginaInicial } from "../../shared/layouts";
 import { PessoaServece } from "../../shared/services/api/pessoas/PessoasService";
+import { FormHandles } from "@unform/core";
+
+interface IFormData {
+    nomeCompleto: string,
+    email: string,
+    cidadeId: number,
+}
 
 export const DetalheDePessoas =()=>{
 
     const {id ='nova'} = useParams<'id'>();
     const navite = useNavigate()
+    const formRef = useRef<FormHandles>(null)
 
     const [isLoading, setIsLoading] = useState(false)
     const [nome, setNome] = useState('')
+
+    const handleSave = (dados: IFormData)=>{
+        console.log(dados)
+    }
 
     const handleDelete = (id : number) =>{
         mensagemDeCorfirmacao('Deseja realmente excluir este item?', ()=>{
@@ -63,15 +75,16 @@ export const DetalheDePessoas =()=>{
                 aoClicarApgar={()=>handleDelete(Number(id))}
                 aoClicarNovo={()=>navite(`/pessoas/detalhe/nova`)}
                 aoClicarVoltar={()=>navite(`/listagem-de-pessoas`)}
+                aoClicarSalvarEVoltar={()=>formRef.current?.submitForm()}
+                aoClicarSalvar={()=>formRef.current?.submitForm()}
             ></FerramentaDeDetalhe>
         }
         >
             {isLoading && (<LinearProgress variant="indeterminate"/>)}
-            <Form onSubmit={(dados)=>console.log(dados)}>
-                <VTextField
-                    name="nomeCompleto"
-                />
-                <button type={"submit"}>submit</button>
+            <Form ref={formRef} onSubmit={handleSave}>
+                <VTextField name="nomeCompleto" />
+                <VTextField name="email" />
+                <VTextField name="cidadeId"/>
             </Form>
         </LayoutBaseDePaginaInicial>
     )
